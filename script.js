@@ -19,12 +19,12 @@ fetch('data/locations.json')
     data.forEach(loc => {
       const marker = L.marker([loc.y, loc.x]).addTo(map);
 
-      marker.bindPopup(`
-        <b>${loc.name || ""}</b><br>
-        ${loc.description || ""}<br><br>
-        <i>${loc.notes || ""}</i><br>
-        <small>${loc.session || ""}</small>
-      `);
+      marker.bindPopup(
+        "<b>" + (loc.name || "") + "</b><br>" +
+        (loc.description || "") + "<br><br>" +
+        "<i>" + (loc.notes || "") + "</i><br>" +
+        "<small>" + (loc.session || "") + "</small>"
+      );
     });
   })
   .catch(err => console.error("Erro ao carregar locations.json:", err));
