@@ -2,8 +2,8 @@
   {
     "id": 1,
     "name": "Baldur's Gate",
-    "x": 650,
-    "y": 400,
+    "x": 582,
+    "y": 464,
     "type": "cidade",
     "status": "visitado",
     "description": "Grande cidade portuária.",
