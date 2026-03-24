@@ -21,6 +21,10 @@ function initMap(config) {
 
         let popup = `<b>${loc.name}</b><br>${loc.description || ""}`;
 
+        if (loc.imagem) {
+          popup += `<br><img src="${loc.image}" style="width:200px; margin-top:5px;">`;
+        }
+        
         if (loc.link) {
           popup += `<br><br><a href="${loc.link}">Abrir mapa</a>`;
         }
