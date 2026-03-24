@@ -2,16 +2,16 @@
   {
     "id": 1,
     "name": "Costa da Espada",
-    "x": 1144,
-    "y": 2728,
+    "x": 1625,
+    "y": 1873,
     "description": "Região importante de aventuras.",
     "link": "sword-coast.html"
   },
     {
     "id": 2,
     "name": "Chult",
-    "x": 744,
-    "y": 357,
+    "x": 1092,
+    "y": 257,
     "description": "Península a sul sul do continente de Faerun, repleta de ruínas e mistérios.",
     "link": "chult.html"
   }
