@@ -14,7 +14,7 @@
     "notes": "https://www.notion.so/Baldur-s-Gate-Port-o-de-Baldur-265a1eb8381480eea77af7a31ce52f55",
     "npcs": [
       {
-        "id": "Liara"
+        "id": "Liara", "name": "Liara Portyr"
       }
     ]
   },
@@ -33,7 +33,7 @@
     "notes": "https://www.notion.so/Elturel-26aa1eb838148036a51ecdb0cd64d606",
     "npcs": [
       {
-        "id": "Thavius"
+        "id": "Thavius", "name": "Thavius Kreeg"
       }
     ]
   },
