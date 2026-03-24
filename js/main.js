@@ -26,6 +26,14 @@ function initMap(config) {
         }
 
         marker.bindPopup(popup);
+
+        // 👇 NOVO: label
+        marker.bindTooltip(loc.name, {
+          permanent: true,
+          direction: "top",
+          offset: [0, -10],
+          className: "map-label"
+        });
       });
     })
     .catch(err => console.error("Erro ao carregar dados:", err));
@@ -38,3 +46,20 @@ function initMap(config) {
     );
   });
 }
+
+function updateLabels() {
+  const zoom = map.getZoom();
+
+  map.eachLayer(layer => {
+    if (layer instanceof L.Marker && layer.getTooltip()) {
+      if (zoom >= -1) {
+        layer.openTooltip();
+      } else {
+        layer.closeTooltip();
+      }
+    }
+  });
+}
+
+map.on("zoomend", updateLabels);
+updateLabels();
