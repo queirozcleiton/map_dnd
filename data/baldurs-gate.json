@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Portão Basilisco",
+    "x": 582,
+    "y": 464,
+    "type": "defesa",
+    "campaign": {
+      "Descida a Avernus": "visitado",
+    },
+    "description": "Principal portal de acesso externo à cidade de baixo.",
+    "link": "https://www.notion.so/Port-o-Basilisco-26aa1eb8381480be92e7e383c5d443eb",
+  }
+]
