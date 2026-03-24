@@ -6,5 +6,9 @@
   "Liara": {
     "name": "Liara Portyr",
     "description": "Sobrinha do Duque Dylard Portyr. Foi enviada ao Forte Beluarian em Chult para comandar o assentamento. Recentemente foi convocada a retornar à Baldur's Gate devido à crise de regugiados de Elturel e o desaparecimento do Grand Duque Ravengard."
+  },
+    "Thavius": {
+    "name": "Thavius Kreeg",
+    "description": "Alto observador de Elturel. Desapareceu junto da cidade durante o cataclisma."
   }
 }
