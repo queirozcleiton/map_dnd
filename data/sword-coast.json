@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "Baldur's Gate",
+    "imagem": "https://i1.wp.com/www.sageadvice.eu/wp-content/uploads/2021/10/BaldursGate_7.jpg"
     "x": 582,
     "y": 464,
     "type": "cidade",
