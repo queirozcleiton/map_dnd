@@ -4,7 +4,7 @@
     "name": "Costa da Espada",
     "x": 1625,
     "y": 1873,
-    "description": "Região importante de aventuras.",
+    "description": "Região costeira vibrante e perigosa, repleta de cidades ricas, intrigas políticas e constantes ameaças vindas do mar e do interior.",
     "link": "sword-coast.html"
   },
     {
@@ -12,7 +12,63 @@
     "name": "Chult",
     "x": 1092,
     "y": 257,
-    "description": "Península a sul sul do continente de Faerun, repleta de ruínas e mistérios.",
-    "link": "chult.html"
+    "description": "Uma selva densa e inóspita, repleta de ruínas antigas, criaturas exóticas e perigos naturais quase intransponíveis.",
+    // "link": false
+  },
+  {
+    "id": 3,
+    "name": "O Norte (The North)",
+    "x": 1428,
+    "y": 2500,
+    "description": "Terras selvagens e pouco exploradas, onde o frio, monstros e antigas ruínas testam a sobrevivência de qualquer aventureiro.",
+    "link": false
+  },
+  {
+    "id": 4,
+    "name": "Anauroch",
+    "x": 2100,
+    "y": 2344,
+    "description": "Um vasto deserto formado por magia antiga, onde ruínas soterradas e perigos ocultos guardam segredos de impérios esquecidos.",
+    "link": false
+  },
+  {
+    "id": 5,
+    "name": "Impérios Antigos (Old Empires)",
+    "x": 3304,
+    "y": 841,
+    "description": "Regiões marcadas por civilizações perdidas, cujos vestígios ainda influenciam o presente através de ruínas, artefatos e maldições.",
+    "link": false
+  },
+  {
+    "id": 6,
+    "name": "Impérios Arcanos (Arcane Empires)",
+    "x": 3705,
+    "y": 1485,
+    "description": "Terras que já foram dominadas por magos de poder incomparável, deixando legados mágicos instáveis e extremamente perigosos.",
+    "link": false
+  },
+  {
+    "id": 7,
+    "name": "Terras da Intriga (Lands of Intrigue)",
+    "x": 1732,
+    "y": 961,
+    "description": "Um mosaico de reinos e cidades onde política, traição e alianças frágeis moldam o destino de seus habitantes.",
+    "link": false
+  },
+  {
+    "id": 8,
+    "name": "Terras Centrais (Heartlands)",
+    "x": 2360,
+    "y": 1700,
+    "description": "O coração de Faerûn, com grande diversidade cultural, rotas comerciais importantes e conflitos constantes entre nações.",
+    "link": false
+  },
+  {
+    "id": 9,
+    "name": "Terras Esquecidas (Forgotten Lands)",
+    "x": 3255,
+    "y": 2075,
+    "description": "Regiões isoladas e misteriosas, pouco conhecidas até mesmo pelos estudiosos, onde perigos antigos ainda permanecem intactos.",
+    "link": false
   }
 ]
