@@ -7,7 +7,7 @@
     "y": 464,
     "type": "cidade",
     "campaign": {
-      "Descida a Avernus": "visitado";
+      "Descida a Avernus": "visitado",
       "Tumba da Aniquilação": "conhecido"
     },
     "description": "Grande cidade portuária.",
@@ -16,7 +16,7 @@
       {"id": "Duque",
        "id": "Liara"
       }
-     ]
+     ],
     },
     {
     "id": 2,
@@ -26,7 +26,7 @@
     "y": 505,
     "type": "cidade",
     "campaign": {
-      "Descida a Avernus": "visitado";
+      "Descida a Avernus": "visitado",
       "Tumba da Aniquilação": "conhecido"
     },
     "description": "Cidade sagrada que possui dois sóis. Desapareceu recentemente durante um cataclisma.",
@@ -34,7 +34,7 @@
     "npcs": [
       {"id": "Thavius"
       }
-     ]
+     ],
     },
     {
     "id": 3,
@@ -43,7 +43,7 @@
     "y": 500,
     "type": "forte",
     "campaign": {
-      "Descida a Avernus": "perigoso";
+      "Descida a Avernus": "perigoso",
       "Tumba da Aniquilação": "conhecido"
     },
     "description": "Forte que possuía suas portas lacradas. Após o cataclisma em elturel, suas portas foram violadas.",
