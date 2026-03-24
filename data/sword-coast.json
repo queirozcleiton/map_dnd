@@ -12,6 +12,7 @@
     },
     "description": "Grande cidade portuária.",
     "notes": "https://www.notion.so/Baldur-s-Gate-Port-o-de-Baldur-265a1eb8381480eea77af7a31ce52f55",
+    "link": "baldurs-gate.html"
     "npcs": [
       {
         "id": "Liara", "name": "Liara Portyr"
