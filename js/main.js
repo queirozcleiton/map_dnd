@@ -20,11 +20,7 @@ function initMap(config) {
         const marker = L.marker([loc.y, loc.x]).addTo(map);
 
         let popup = `<b>${loc.name}</b><br>${loc.description || ""}`;
-
-        if (loc.image) {
-          popup += `<br><img src="${loc.image}" style="width:200px; margin-top:5px;">`;
-        }
-        
+      
         if (loc.link) {
           popup += `<br><br><a href="${loc.link}">Abrir mapa</a>`;
         }
