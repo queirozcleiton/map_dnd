@@ -7,15 +7,16 @@
     "y": 464,
     "type": "cidade",
     "campaign": {
-      "Descida a Avernus": "visitado",
-      "Tumba da Aniquilação": "conhecido"
+      "avernus": "visitado",
+      "tumba": "conhecido"
     },
     "description": "Grande cidade portuária.",
     "notes": "https://www.notion.so/Baldur-s-Gate-Port-o-de-Baldur-265a1eb8381480eea77af7a31ce52f55",
     "link": "baldurs-gate.html",
     "npcs": [
       {
-        "id": "Liara", "name": "Liara Portyr"
+        "id": "liara",
+        "name": "Liara Portyr"
       }
     ]
   },
@@ -27,14 +28,15 @@
     "y": 505,
     "type": "cidade",
     "campaign": {
-      "Descida a Avernus": "visitado",
-      "Tumba da Aniquilação": "conhecido"
+      "avernus": "visitado",
+      "tumba": "conhecido"
     },
     "description": "Cidade sagrada que possui dois sóis. Desapareceu recentemente durante um cataclisma.",
     "notes": "https://www.notion.so/Elturel-26aa1eb838148036a51ecdb0cd64d606",
     "npcs": [
       {
-        "id": "Thavius", "name": "Thavius Kreeg"
+        "id": "thavius",
+        "name": "Thavius Kreeg"
       }
     ]
   },
@@ -45,10 +47,10 @@
     "y": 500,
     "type": "forte",
     "campaign": {
-      "Descida a Avernus": "perigoso",
-      "Tumba da Aniquilação": "conhecido"
+      "avernus": "perigoso",
+      "tumba": "conhecido"
     },
-    "description": "Forte que possuía suas portas lacradas. Após o cataclisma em elturel, suas portas foram violadas.",
+    "description": "Forte que possuía suas portas lacradas. Após o cataclisma em Elturel, suas portas foram violadas.",
     "notes": "https://www.notion.so/Forte-Senhor-da-Manh-7c8bc2335955483da49b94f586ac52ae"
   }
 ]
