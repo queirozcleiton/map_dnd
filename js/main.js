@@ -45,9 +45,7 @@ function initMap(config) {
       "Y:", Math.round(e.latlng.lat)
     );
   });
-}
-
-function updateLabels() {
+  function updateLabels() {
   const zoom = map.getZoom();
 
   map.eachLayer(layer => {
@@ -63,3 +61,4 @@ function updateLabels() {
 
 map.on("zoomend", updateLabels);
 updateLabels();
+}
