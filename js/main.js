@@ -21,7 +21,7 @@ function initMap(config) {
 
         let popup = `<b>${loc.name}</b><br>${loc.description || ""}`;
 
-        if (loc.imagem) {
+        if (loc.image) {
           popup += `<br><img src="${loc.image}" style="width:200px; margin-top:5px;">`;
         }
         
