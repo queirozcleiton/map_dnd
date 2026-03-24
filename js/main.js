@@ -14,22 +14,55 @@ function initMap(config) {
 
   let npcData = {};
 
+  // 🎯 CONFIGURAÇÃO DE FILTROS
+  const filters = {
+    types: new Set(["cidade", "forte", "dungeon"]),
+    campaign: "avernus"
+  };
+
+  // 🎨 Cor por tipo
+  function getColorByType(type) {
+    switch (type) {
+      case "cidade": return "blue";
+      case "forte": return "red";
+      case "dungeon": return "purple";
+      default: return "gray";
+    }
+  }
+
+  // 🧠 Regra de visibilidade
+  function shouldShow(loc) {
+    if (!filters.types.has(loc.type)) return false;
+
+    const status = loc.campaign?.[filters.campaign];
+
+    return status !== undefined;
+  }
+
   // 🔹 Carregar NPCs primeiro
   fetch('data/npcs.json')
     .then(res => res.json())
     .then(npcs => {
       npcData = npcs;
-
-      // 🔹 Depois carregar localidades
       return fetch(config.data);
     })
     .then(res => res.json())
     .then(data => {
 
       data.forEach(loc => {
-        const marker = L.marker([loc.y, loc.x]).addTo(map);
 
-        // 🧱 Montagem do popup
+        if (!shouldShow(loc)) return;
+
+        const color = getColorByType(loc.type);
+
+        const marker = L.circleMarker([loc.y, loc.x], {
+          radius: 6,
+          color: color,
+          fillColor: color,
+          fillOpacity: 0.8
+        }).addTo(map);
+
+        // 🧱 Popup
         let popup = `<b>${loc.name}</b>`;
 
         // 📷 Imagem
@@ -57,9 +90,9 @@ function initMap(config) {
           popup += `</ul>`;
         }
 
-        // 📝 Notas
+        // 📝 Notas (como link)
         if (loc.notes) {
-          popup += `<br><br><i>${loc.notes}</i>`;
+          popup += `<br><br><a href="${loc.notes}" target="_blank">Ver anotações</a>`;
         }
 
         // 🔗 Link
@@ -78,13 +111,12 @@ function initMap(config) {
         });
       });
 
-      // 🔄 Atualizar labels após criar markers
       updateLabels();
     })
     .catch(err => console.error("Erro ao carregar dados:", err));
 
   // 🧪 Debug coordenadas
-  map.on('click', function(e) {
+  map.on('click', function (e) {
     console.log(
       "X:", Math.round(e.latlng.lng),
       "Y:", Math.round(e.latlng.lat)
@@ -96,7 +128,7 @@ function initMap(config) {
     const zoom = map.getZoom();
 
     map.eachLayer(layer => {
-      if (layer instanceof L.Marker && layer.getTooltip()) {
+      if (layer instanceof L.CircleMarker && layer.getTooltip()) {
         if (zoom >= -1) {
           layer.openTooltip();
         } else {
