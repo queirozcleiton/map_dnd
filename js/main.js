@@ -13,6 +13,8 @@ function initMap(config) {
   map.setMaxZoom(1);
 
   let npcData = {};
+  let allLocations = [];
+  let markersLayer = L.layerGroup().addTo(map);
 
   // 🎯 CONFIGURAÇÃO DE FILTROS
   const filters = {
@@ -30,16 +32,87 @@ function initMap(config) {
     }
   }
 
-  // 🧠 Regra de visibilidade
+  // 🧠 Regra de visibilidade (corrige Faerûn)
   function shouldShow(loc) {
-    if (!filters.types.has(loc.type)) return false;
+    if (loc.type && !filters.types.has(loc.type)) return false;
 
-    const status = loc.campaign?.[filters.campaign];
+    // Se não tem campanha → mostra (resolve Faerûn)
+    if (!loc.campaign) return true;
+
+    const status = loc.campaign[filters.campaign];
 
     return status !== undefined;
   }
 
-  // 🔹 Carregar NPCs primeiro
+  // 🧱 Renderização dos markers
+  function renderMarkers() {
+    markersLayer.clearLayers();
+
+    allLocations.forEach(loc => {
+
+      if (!shouldShow(loc)) return;
+
+      const color = getColorByType(loc.type);
+
+      const marker = L.circleMarker([loc.y, loc.x], {
+        radius: 6,
+        color: color,
+        fillColor: color,
+        fillOpacity: 0.8
+      }).addTo(markersLayer);
+
+      let popup = `<b>${loc.name}</b>`;
+
+      // 📷 Imagem
+      if (loc.image) {
+        popup += `<br><img src="${loc.image}" style="width:200px; margin:5px 0;">`;
+      }
+
+      // 📄 Descrição
+      if (loc.description) {
+        popup += `<br>${loc.description}`;
+      }
+
+      // 🧠 NPCs
+      if (loc.npcs && loc.npcs.length > 0) {
+        popup += `<br><br><b>NPCs Notáveis:</b><ul>`;
+
+        loc.npcs.forEach(npc => {
+          const info = npcData[npc.id];
+
+          popup += `<li title="${info?.description || ""}">
+            ${npc.name}
+          </li>`;
+        });
+
+        popup += `</ul>`;
+      }
+
+      // 📝 Notas (link)
+      if (loc.notes) {
+        popup += `<br><br><a href="${loc.notes}" target="_blank">Ver anotações</a>`;
+      }
+
+      // 🔗 Link
+      if (loc.link) {
+        popup += `<br><br><a href="${loc.link}">Abrir mapa</a>`;
+      }
+
+      marker.bindPopup(popup);
+
+      // 🏷️ Label
+      marker.bindTooltip(loc.name, {
+        permanent: true,
+        direction: "top",
+        offset: [0, -10],
+        className: "map-label"
+      });
+    });
+
+    updateLabels();
+  }
+
+  // 🔄 Carregamento de dados
   fetch('data/npcs.json')
     .then(res => res.json())
     .then(npcs => {
@@ -48,70 +121,8 @@ function initMap(config) {
     })
     .then(res => res.json())
     .then(data => {
-
-      data.forEach(loc => {
-
-        if (!shouldShow(loc)) return;
-
-        const color = getColorByType(loc.type);
-
-        const marker = L.circleMarker([loc.y, loc.x], {
-          radius: 6,
-          color: color,
-          fillColor: color,
-          fillOpacity: 0.8
-        }).addTo(map);
-
-        // 🧱 Popup
-        let popup = `<b>${loc.name}</b>`;
-
-        // 📷 Imagem
-        if (loc.image) {
-          popup += `<br><img src="${loc.image}" style="width:200px; margin:5px 0;">`;
-        }
-
-        // 📄 Descrição
-        if (loc.description) {
-          popup += `<br>${loc.description}`;
-        }
-
-        // 🧠 NPCs
-        if (loc.npcs && loc.npcs.length > 0) {
-          popup += `<br><br><b>NPCs Notáveis:</b><ul>`;
-
-          loc.npcs.forEach(npc => {
-            const info = npcData[npc.id];
-
-            popup += `<li title="${info?.description || ""}">
-              ${npc.name}
-            </li>`;
-          });
-
-          popup += `</ul>`;
-        }
-
-        // 📝 Notas (como link)
-        if (loc.notes) {
-          popup += `<br><br><a href="${loc.notes}" target="_blank">Ver anotações</a>`;
-        }
-
-        // 🔗 Link
-        if (loc.link) {
-          popup += `<br><br><a href="${loc.link}">Abrir mapa</a>`;
-        }
-
-        marker.bindPopup(popup);
-
-        // 🏷️ Label
-        marker.bindTooltip(loc.name, {
-          permanent: true,
-          direction: "top",
-          offset: [0, -10],
-          className: "map-label"
-        });
-      });
-
-      updateLabels();
+      allLocations = data;
+      renderMarkers();
     })
     .catch(err => console.error("Erro ao carregar dados:", err));
 
@@ -139,4 +150,22 @@ function initMap(config) {
   }
 
   map.on("zoomend", updateLabels);
+
+  // 🎛️ Filtro interativo
+  const filterContainer = document.getElementById("filters");
+
+  if (filterContainer) {
+    document.querySelectorAll('#filters input').forEach(input => {
+      input.addEventListener('change', () => {
+
+        if (input.checked) {
+          filters.types.add(input.value);
+        } else {
+          filters.types.delete(input.value);
+        }
+
+        renderMarkers(); // 🔥 re-render real
+      });
+    });
+  }
 }
