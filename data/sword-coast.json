@@ -6,20 +6,48 @@
     "x": 582,
     "y": 464,
     "type": "cidade",
-    "status": "visitado",
+    "campaign": {
+      "Descida a Avernus": "visitado";
+      "Tumba da Aniquilação": "conhecido"
+    },
     "description": "Grande cidade portuária.",
-    "notes": "Contato importante: Tharivol",
-    "session": "Sessão 3"
-  },
-  {
+    "notes": "https://www.notion.so/Baldur-s-Gate-Port-o-de-Baldur-265a1eb8381480eea77af7a31ce52f55",
+    "npcs": [
+      {"id": "Duque",
+       "id": "Liara"
+      }
+     ]
+    },
+    {
     "id": 2,
     "name": "Elturel",
-    "x": 1000,
-    "y": 464,
+    "image": "https://www.worldanvil.com/uploads/images/a083ad846d6f728ec3a5313c20f61f7e.png",
+    "x": 875,
+    "y": 505,
     "type": "cidade",
-    "status": "visitado",
-    "description": "Cidade sagrada, que desapareceu em um cataclisma.",
-    "notes": "Contato importante: Thavius Kreeg",
-    "session": "Sessão 1"
-  }
+    "campaign": {
+      "Descida a Avernus": "visitado";
+      "Tumba da Aniquilação": "conhecido"
+    },
+    "description": "Cidade sagrada que possui dois sóis. Desapareceu recentemente durante um cataclisma.",
+    "notes": "https://www.notion.so/Elturel-26aa1eb838148036a51ecdb0cd64d606",
+    "npcs": [
+      {"id": "Thavius"
+      }
+     ]
+    },
+    {
+    "id": 3,
+    "name": "Forte Senhor-da-Manhã",
+    "x": 800,
+    "y": 500,
+    "type": "forte",
+    "campaign": {
+      "Descida a Avernus": "perigoso";
+      "Tumba da Aniquilação": "conhecido"
+    },
+    "description": "Forte que possuía suas portas lacradas. Após o cataclisma em elturel, suas portas foram violadas.",
+    "notes": "https://www.notion.so/Forte-Senhor-da-Manh-7c8bc2335955483da49b94f586ac52ae"
+    }  
+  
 ]
