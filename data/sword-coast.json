@@ -10,4 +10,15 @@
     "notes": "Contato importante: Tharivol",
     "session": "Sessão 3"
   }
+  {
+    "id": 2,
+    "name": "Elturel",
+    "x": 1000,
+    "y": 464,
+    "type": "cidade",
+    "status": "visitado",
+    "description": "Cidade sagrada, que desapareceu em um cataclisma.",
+    "notes": "Contato importante: Thavius Kreeg",
+    "session": "Sessão 1"
+  }
 ]
