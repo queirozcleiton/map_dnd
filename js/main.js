@@ -22,21 +22,21 @@ function initMap(config) {
     campaign: "avernus"
   };
 
-  // 🎨 Cor por tipo
-  function getColorByType(type) {
-    switch (type) {
-      case "cidade": return "blue";
-      case "forte": return "red";
-      case "dungeon": return "purple";
+  // 🎨 Cor por STATUS
+  function getColorByStatus(status) {
+    switch (status) {
+      case "conhecido": return "blue";
+      case "visitado": return "green";
+      case "perigoso": return "red";
       default: return "gray";
     }
   }
 
-  // 🧠 Regra de visibilidade (corrige Faerûn)
+  // 🧠 Regra de visibilidade
   function shouldShow(loc) {
     if (loc.type && !filters.types.has(loc.type)) return false;
 
-    // Se não tem campanha → mostra (resolve Faerûn)
+    // Se não tem campaign → mostra (Faerûn)
     if (!loc.campaign) return true;
 
     const status = loc.campaign[filters.campaign];
@@ -52,13 +52,20 @@ function initMap(config) {
 
       if (!shouldShow(loc)) return;
 
-      const color = getColorByType(loc.type);
+      let status = null;
+
+      if (loc.campaign) {
+        status = loc.campaign[filters.campaign];
+      }
+
+      const color = getColorByStatus(status);
 
       const marker = L.circleMarker([loc.y, loc.x], {
-        radius: 6,
-        color: color,
+        radius: 10,          // 👈 maior para mobile
+        color: "black",      // 👈 borda
+        weight: 2,
         fillColor: color,
-        fillOpacity: 0.8
+        fillOpacity: 0.9
       }).addTo(markersLayer);
 
       let popup = `<b>${loc.name}</b>`;
@@ -88,7 +95,7 @@ function initMap(config) {
         popup += `</ul>`;
       }
 
-      // 📝 Notas (link)
+      // 📝 Notas
       if (loc.notes) {
         popup += `<br><br><a href="${loc.notes}" target="_blank">Ver anotações</a>`;
       }
@@ -112,7 +119,7 @@ function initMap(config) {
     updateLabels();
   }
 
-  // 🔄 Carregamento de dados
+  // 🔄 Carregar dados
   fetch('data/npcs.json')
     .then(res => res.json())
     .then(npcs => {
@@ -134,7 +141,7 @@ function initMap(config) {
     );
   });
 
-  // 🎚️ Controle de labels por zoom
+  // 🎚️ Labels por zoom
   function updateLabels() {
     const zoom = map.getZoom();
 
@@ -164,7 +171,7 @@ function initMap(config) {
           filters.types.delete(input.value);
         }
 
-        renderMarkers(); // 🔥 re-render real
+        renderMarkers();
       });
     });
   }
